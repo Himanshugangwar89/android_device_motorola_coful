@@ -6,6 +6,24 @@
 #
 
 LOCAL_PATH := device/motorola/coful
+
+# Dynamic Partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+# Api level
+PRODUCT_SHIPPING_API_LEVEL := 30
+
+# Platform
+PRODUCT_PLATFORM := mt6768
+
+# A/B
+ENABLE_VIRTUAL_AB := true
+
+# fastboot/d hal
+PRODUCT_PACKAGES += \
+    android.hardware.fastboot@1.0-impl-mock \
+    fastbootd
+
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -18,10 +36,15 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl \
     android.hardware.boot@1.0-service
 
+# Health Hal
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-service
+
 PRODUCT_PACKAGES += \
     bootctrl.mt6768
 
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+PRODUCT_PACKAGES += \
     bootctrl.mt6768 \
     libgptutils \
     libz \
@@ -33,3 +56,5 @@ PRODUCT_PACKAGES += \
     update_engine \
     update_verifier \
     update_engine_sideload
+
+#
